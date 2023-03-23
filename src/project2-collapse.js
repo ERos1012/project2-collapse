@@ -134,9 +134,17 @@ class Project2Collapse extends LitElement {
   render() {
     return html`
       <main>
+        <input type="text" id="getme" placeholder="Search" />
+        <div>
+          <label>input</label>
+          <div class="input"></div>
+        </div>
+        <div>
+          <label>change</label>
+          <div class="change"></div>
+        </div>
         <div class="list">
-          <div class="list-item">
-          </div>
+          <div class="list-item"></div>
         </div>
       </main>
     `;
