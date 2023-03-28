@@ -5,6 +5,10 @@ const imageURL = new URL(
 ).href;
 
 class Project2Collapse extends LitElement {
+  static get tag() {
+    return "card-list";
+  }
+
   static properties = {
     badgeHeader: { type: String },
     badgeName: { type: String },
@@ -23,7 +27,6 @@ class Project2Collapse extends LitElement {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: flex-start;
       font-size: calc(10px + 2vmin);
       color: #1a2b42;
@@ -92,29 +95,6 @@ class Project2Collapse extends LitElement {
       height: 50px;
     }
 
-    input {
-      font-size: 20px;
-      font-weight: bold;
-      border: none;
-      border-bottom: 1px solid black;
-      transition: all 0.3s ease-in-out;
-    }
-    input:focus {
-      border-bottom: 2px solid blue;
-      outline: 1px solid grey;
-      outline-offset: 4px;
-    }
-    input:hover:not(:focus) {
-      border-bottom: 2px solid grey;
-    }
-
-    /** accessibility enhancement to not animate the changes possibly
-    for users that have motion activated disabilities **/
-    @media (prefers-reduced-motion) {
-      input {
-        transition: none;
-      }
-    }
   `;
 
   constructor() {
@@ -134,21 +114,24 @@ class Project2Collapse extends LitElement {
   render() {
     return html`
       <main>
-        <input type="text" id="getme" placeholder="Search" />
-        <div>
-          <label>input</label>
-          <div class="input"></div>
-        </div>
-        <div>
-          <label>change</label>
-          <div class="change"></div>
-        </div>
-        <div class="list">
-          <div class="list-item"></div>
-        </div>
+      <div class="item">
+                <collapse-card 
+                    badgeHeader=${this.badgeHeader}
+                    badgeName=${this.badgeName}
+                    badgeUrl=${this.badgeUrl}
+                    badgeDescription=${this.badgeDescription}
+                    badgeImage=${this.badgeImage}
+                    badgeCreator=${this.badgeCreator}
+                    timeToComplete=${this.timeToComplete}
+                    stepsName=${this.stepsName}
+                    stepsDescription=${this.stepsDescription}
+                    stepsTime=${this.stepsTime}
+                    >   
+                </collapse-card>
+            </div>
       </main>
     `;
   }
 }
 
-customElements.define("project2-collapse", Project2Collapse);
+customElements.define(Project2Collapse.tag, Project2Collapse);
